@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>AI Email Subject Line Generator</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>AI Email Subject Line Generator by <span>Ecdysiz</span></h1>
+    <p class="subtitle">Create compelling email subject lines for your campaigns</p>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-group">
+                <label for="emailContent">Email Content</label>
+                <textarea id="emailContent" placeholder="Paste or describe your email content here..."></textarea>
+                <p class="error-msg" id="contentError">Please provide email content</p>
+            </div>
+
+            <div class="form-group">
+                <label for="emailTone">Subject Line Tone</label>
+                <select class="tone-dropdown" id="emailTone">
+                    <option value="angry">😡 Angry</option>
+                    <option value="appreciative">👏 Appreciative</option>
+                    <option value="assertive">💪 Assertive</option>
+                    <option value="concerned">😟 Concerned</option>
+                    <option value="confident">💪 Confident</option>
+                    <option value="cooperative">🤝 Cooperative</option>
+                    <option value="curious">🤔 Curious</option>
+                    <option value="disapproving">🙅 Disapproving</option>
+                    <option value="disheartening">😞 Disheartening</option>
+                    <option value="egocentric">🧠 Egocentric</option>
+                    <option value="empathetic">🥰 Empathetic</option>
+                    <option value="encouraging">👍 Encouraging</option>
+                    <option value="enthusiastic">😊 Enthusiastic</option>
+                    <option value="excited">🤩 Excited</option>
+                    <option value="friendly">😊 Friendly</option>
+                    <option value="funny">😂 Funny</option>
+                    <option value="joyful">😄 Joyful</option>
+                    <option value="neutral">😐 Neutral</option>
+                    <option value="optimistic">✌️ Optimistic</option>
+                    <option value="regretful">😔 Regretful</option>
+                    <option value="sad">😢 Sad</option>
+                    <option value="serious">😑 Serious</option>
+                    <option value="surprised">😲 Surprised</option>
+                    <option value="unassuming">😇 Unassuming</option>
+                    <option value="worried">😰 Worried</option>
+                </select>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="includeEmojis" name="includeEmojis">
+                <label for="includeEmojis">Include Emojis in Subject Lines</label>
+            </div>
+
+            <div class="form-group" id="emojiSelectGroup" style="display: none;">
+                <button class="emoji-select-btn" id="emojiSelectBtn">
+                    <i class="fas fa-smile"></i> Select Emojis
+                </button>
+                <div class="emoji-grid" id="emojiGrid">
+                    <span class="emoji-option" data-emoji="📧">📧</span>
+                    <span class="emoji-option" data-emoji="✨">✨</span>
+                    <span class="emoji-option" data-emoji="🔥">🔥</span>
+                    <span class="emoji-option" data-emoji="💥">💥</span>
+                    <span class="emoji-option" data-emoji="🎉">🎉</span>
+                    <span class="emoji-option" data-emoji="🚀">🚀</span>
+                    <span class="emoji-option" data-emoji="⭐">⭐</span>
+                    <span class="emoji-option" data-emoji="⚡">⚡</span>
+                    <span class="emoji-option" data-emoji="⏰">⏰</span>
+                    <span class="emoji-option" data-emoji="💡">💡</span>
+                    <span class="emoji-option" data-emoji="💌">💌</span>
+                    <span class="emoji-option" data-emoji="🔔">🔔</span>
+                    <span class="emoji-option" data-emoji="✅">✅</span>
+                    <span class="emoji-option" data-emoji="❓">❓</span>
+                    <span class="emoji-option" data-emoji="❗">❗</span>
+                    <span class="emoji-option" data-emoji="💰">💰</span>
+                    <span class="emoji-option" data-emoji="🎁">🎁</span>
+                    <span class="emoji-option" data-emoji="📅">📅</span>
+                    <span class="emoji-option" data-emoji="🛒">🛒</span>
+                    <span class="emoji-option" data-emoji="🔒">🔒</span>
+                </div>
+            </div>
+
+            <div class="form-group" id="emojiAlignmentGroup" style="display: none;">
+                <label for="emojiAlignment">Emoji Alignment</label>
+                <select class="alignment-dropdown" id="emojiAlignment">
+                    <option value="start">Start</option>
+                    <option value="center">Center</option>
+                    <option value="end" selected>End</option>
+                </select>
+            </div>
+
+            <div class="tips">
+                <h4><i class="fas fa-lightbulb"></i> Tips for Better Subject Lines</h4>
+                <ul>
+                    <li>Keep it concise (under 60 characters)</li>
+                    <li>Use action-oriented words</li>
+                    <li>Personalize when possible</li>
+                    <li>Create a sense of urgency or curiosity</li>
+                </ul>
+            </div>
+
+            <button class="btn" id="generateBtn">GENERATE.Subject LINES</button>
+        </div>
+
+        <div class="loading-indicator" id="loadingIndicator">
+            <div class="spinner"></div>
+            <span>Generating your subject lines...</span>
+        </div>
+
+        <div class="result-container" id="resultContainer">
+            <h2 class="result-title">Your Generated Subject Lines</h2>
+            <div id="subjectResults">
+                <!-- Generated subject lines will be inserted here -->
+            </div>
+            <div class="button-group">
+                <button class="btn-copy" id="copyAllBtn"><i class="fas fa-copy"></i> Copy All</button>
+                <button class="btn-download" id="downloadBtn"><i class="fas fa-download"></i> Download as Text</button>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
